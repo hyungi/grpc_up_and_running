@@ -1,4 +1,5 @@
 # How to build
+## 1. Build by shell command
 ```shell
 # build server
 $ cd /service
@@ -7,6 +8,14 @@ $ go build -v -o bin/server
 # build client
 $ cd /client
 $ go build -v -o bin/client
+```
+## 2. Build by Makefile
+Makefile is added you can easily generate proto file and build and remove artifact.
+
+By this code, you can get server image at productinfo/{server|client}/bin
+```shell
+$ cd productinfo/{server|client}
+$ make generate && make build
 ```
 
 ## Detail about build flags
