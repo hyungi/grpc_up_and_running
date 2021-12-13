@@ -10,6 +10,8 @@ import (
 	"google.golang.org/grpc/status"
 )
 
+//go:generate protoc -I ecommerce ecommerce/proto_info.proto --go_out=plugins=grpc:./ecommerce
+
 // server is used to implement ecommerce/product_info.
 type server struct {
 	productMap map[string]*pb.Product
