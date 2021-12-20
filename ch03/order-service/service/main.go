@@ -47,16 +47,13 @@ func (s *server) GetOrder(ctx context.Context, orderId *wrapper.StringValue) (*p
 	}
 
 	return nil, status.Errorf(codes.NotFound, "Order does not exist. : ", orderId)
-
 }
 
 // Server-side Streaming RPC
 func (s *server) SearchOrders(searchQuery *wrappers.StringValue, stream pb.OrderManagement_SearchOrdersServer) error {
-
 	for key, order := range orderMap {
-		log.Print(key, order)
+		log.Printf("key: %s, order: %s", key, fmt.Sprintf("%v", &order))
 		for _, itemStr := range order.Items {
-			log.Print(itemStr)
 			if strings.Contains(itemStr, searchQuery.Value) {
 				// Send the matching orders in a stream
 				err := stream.Send(&order)
@@ -96,7 +93,6 @@ func (s *server) UpdateOrders(stream pb.OrderManagement_UpdateOrdersServer) erro
 
 // Bi-directional Streaming RPC
 func (s *server) ProcessOrders(stream pb.OrderManagement_ProcessOrdersServer) error {
-
 	batchMarker := 1
 	combinedShipmentMap := make(map[string]pb.CombinedShipment)
 	for {
