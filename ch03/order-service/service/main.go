@@ -21,6 +21,8 @@ import (
 	"strings"
 )
 
+//go:generate protoc -I ecommerce ecommerce/order_management.proto --go_out=plugins=grpc:./ecommerce
+
 const (
 	port           = ":50051"
 	orderBatchSize = 3
