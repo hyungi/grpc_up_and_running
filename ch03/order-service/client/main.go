@@ -14,7 +14,7 @@ import (
 	"google.golang.org/grpc"
 )
 
-//go:generate protoc -I ecommerce ecommerce/order_management.proto --go_out=plugins=grpc:./ecommerce
+//go:generate protoc -I ecommerce ecommerce/order_management.proto --go_out=./ecommerce --go-grpc_out=./ecommerce
 
 const (
 	address = "localhost:50051"

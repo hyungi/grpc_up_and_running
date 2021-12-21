@@ -21,7 +21,7 @@ import (
 	"strings"
 )
 
-//go:generate protoc -I ecommerce ecommerce/order_management.proto --go_out=plugins=grpc:./ecommerce
+//go:generate protoc -I ecommerce ecommerce/order_management.proto --go_out=./ecommerce --go-grpc_out=./ecommerce
 
 const (
 	port           = ":50051"
@@ -32,6 +32,8 @@ var orderMap = make(map[string]pb.Order)
 
 type server struct {
 	orderMap map[string]*pb.Order
+	// UnimplementedOrderManagementServer must be embedded to have forward compatible implementations.
+	pb.UnimplementedOrderManagementServer
 }
 
 // Simple RPC

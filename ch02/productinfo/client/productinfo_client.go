@@ -10,7 +10,7 @@ import (
 	pb "client/ecommerce"
 )
 
-//go:generate protoc -I ecommerce ecommerce/proto_info.proto --go_out=plugins=grpc:./ecommerce
+//go:generate protoc -I ecommerce ecommerce/proto_info.proto --go_out=./ecommerce --go-grpc_out=./ecommerce
 
 const (
 	address = "localhost:50051"
